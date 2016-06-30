@@ -1,6 +1,7 @@
 package com.theironyard.controllers;
 
 import com.theironyard.entities.Lecturer;
+import com.theironyard.entities.Review;
 import com.theironyard.services.LecturerRepository;
 import com.theironyard.services.ReviewRepository;
 import org.h2.tools.Server;
@@ -40,11 +41,24 @@ public class HannibalLecturerRestController {
         return "redirect:/";
     }
 
-    @RequestMapping(path="", method=RequestMethod.GET)
+    @RequestMapping(path="/lecturers", method=RequestMethod.GET)
     public Iterable<Lecturer> getLecturers() {
         Iterable<Lecturer> lects = lecturers.findAll();
         return lects;
-
-
     }
+
+    @RequestMapping(path="/reviews", method= RequestMethod.POST)
+    public String postReviews(String author, String text, int lecturerId, Boolean isGood) {
+        Lecturer lecturer = lecturers.findOne(lecturerId);
+        Review review = new Review(author, text, isGood, lecturer);
+        reviews.save(review);
+        return "redirect:/";
+    }
+
+    @RequestMapping(path="/reviews", method=RequestMethod.GET)
+    public Iterable<Review> getReviews(int lecturerId) {
+        Iterable<Review> revs = reviews.findByLecturerIdOrderByAuthorAsc(lecturerId);
+        return revs;
+    }
+
 }

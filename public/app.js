@@ -65,7 +65,7 @@ var hanLec = {
       success: function(lecturerData) {
         console.log("RECEIVED LECTURERS", lecturerData);
         window.glob = lecturerData;
-        hanLec.addLecturerToDom(JSON.parse(lecturerData));
+        hanLec.addLecturerToDom(lecturerData);
       },
       error: function(err) {
         console.log('oh shit', err);
@@ -132,7 +132,7 @@ var hanLec = {
       url: hanLec.url.reviews + lecturerId,
       success: function(data) {
         console.log(data);
-        hanLec.addRatingsToDom(JSON.parse(data));
+        hanLec.addRatingsToDom(data);
       }
     })
   },
