@@ -48,7 +48,7 @@ public class HannibalLecturerRestController {
     }
 
     @RequestMapping(path="/reviews", method= RequestMethod.POST)
-    public String postReviews(String author, String text, int lecturerId, Boolean isGood) {
+    public String postReviews(String author, String text, int lecturerId, boolean isGood) {
         Lecturer lecturer = lecturers.findOne(lecturerId);
         Review review = new Review(author, text, isGood, lecturer);
         reviews.save(review);

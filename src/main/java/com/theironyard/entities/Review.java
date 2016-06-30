@@ -17,11 +17,11 @@ public class Review {
     @Column(nullable=false)
     String text;
     @Column(nullable=false)
-    Boolean isGood;
+    boolean isGood;
     @ManyToOne
     Lecturer lecturer;
 
-    public Review(String author, String text, Boolean isGood, Lecturer lecturer) {
+    public Review(String author, String text, boolean isGood, Lecturer lecturer) {
         this.author = author;
         this.text = text;
         this.isGood = isGood;
@@ -55,11 +55,11 @@ public class Review {
         this.text = text;
     }
 
-    public Boolean getGood() {
+    public boolean getIsGood() {
         return isGood;
     }
 
-    public void setGood(Boolean good) {
+    public void setIsGood(boolean good) {
         isGood = good;
     }
 
