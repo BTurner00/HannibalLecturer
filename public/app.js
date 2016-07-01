@@ -16,6 +16,7 @@ var hanLec = {
   events: function() {
 
     $('.create-rating, .ratings').on('click',"input[name='back-to-lecturers']",function() {
+      $(this).closest("input[name='back-to-lecturers']").remove();
       hanLec.getLecturers();
     })
 
@@ -155,6 +156,6 @@ var hanLec = {
     });
     $('.ratings').siblings().addClass('hidden');
     $('.ratings').removeClass('hidden');
-    $('.ratings').append('<input type="button" name="back-to-lecturers" value="Back To Lecturers">')
+    //$('.ratings').append('<input type="button" name="back-to-lecturers" value="Back To Lecturers">')
   }
 }
